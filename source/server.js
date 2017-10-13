@@ -16,12 +16,7 @@ function requestHandler(request, response){
   );
 
   response.setHeader('Content-Type', 'text/html');
-  if (context.url) {
-  	response.writeHead(301, {
-  		Location: context.url,
-  	});
-  	response.end();
-  }
+  if (context.url) {response.writeHead(301, {Location: context.url,});response.end();}
   response.write(
     renderToStaticMarkup(
       <Layout

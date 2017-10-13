@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import PostBody from '../../posts/containers/Post.jsx'
-import Loading from '../../shared/components/Loading.jsx'
-import Comment from '../../Comments/components/coment.jsx'
+import React, { Component } from 'react';
 
-import api from '../../api.js';
+import PostBody from '../../posts/containers/Post.jsx';
+import Loading from '../../shared/components/Loading.jsx';
+import Comment from '../../Comments/components/coment.jsx';
+
+import api from '../../api';
 
 class Post extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {

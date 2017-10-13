@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 
 import Post from '../../posts/containers/Post.jsx';
 import Loading from '../../shared/components/Loading.jsx';
-
 import api from '../../api.js';
+
 class Profile extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {

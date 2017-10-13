@@ -1,19 +1,15 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+
 
 import Post from '../../posts/containers/Post.jsx';
 import Loading from '../../shared/components/Loading.jsx';
-import Header from '../../shared/components/Header.jsx';
 import api from '../../api.js';
-
 import styles from './Page.css';
 
 
 class Home extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
-
     this.state = {
       page: 1,
       posts: [],
@@ -59,7 +55,6 @@ class Home extends Component {
           loading: false,
         })
       } catch (error){
-        console.error(error);
         this.setState({loading: false});
       }
     })
@@ -68,7 +63,7 @@ class Home extends Component {
   render(){
     return(
       <section name="Home" className={styles.section}>
-        
+
         <section className={styles.list}>
           {this.state.loading && (
             <Loading />
