@@ -33,4 +33,5 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('../statics/styles.css'),
   ],
+  watch: true,
 }

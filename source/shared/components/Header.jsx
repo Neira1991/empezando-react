@@ -13,7 +13,7 @@ function Header() {
 
       <nav role="navigation" className={styles.navigation}>
         <Link to="/" className={styles.link}>
-          Home
+          Inicio
         </Link>
         <a
           className={styles.link}

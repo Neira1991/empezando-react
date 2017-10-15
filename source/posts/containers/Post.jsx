@@ -25,8 +25,8 @@ class Post extends Component {
       user,
       comments,
     ] = await Promise.all([
-      !this.state.user ? api.users.getSingle(this.props.userId): Promise.resolve(null),
-      !this.state.comments ? api.posts.getComments(this.props.id): Promise.resolve(null),
+      api.users.getSingle(this.props.userId),
+      api.posts.getComments(this.props.idPost),
     ]);
 
     this.setState({
@@ -41,10 +41,9 @@ class Post extends Component {
       <h2 className={styles.title}>
         <Link to={`/post/${this.props.id}`} >
            {this.props.title}
+
         </Link>
       </h2>
-
-
         <p className={styles.body}>
           {this.props.body}
         </p>
@@ -67,7 +66,7 @@ class Post extends Component {
 }
 
 Post.propTypes= {
-  id: PropTypes.number,
+  idPost: PropTypes.number,
   userId: PropTypes.number,
   title: PropTypes.string,
   body: PropTypes.string,

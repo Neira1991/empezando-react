@@ -32,7 +32,7 @@ class Post extends Component {
       loading:false,
       post,
       user,
-      comments
+      comments,
     });
   }
   render(){
