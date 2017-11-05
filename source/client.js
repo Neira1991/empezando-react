@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 
-import Pages from './pages/containers/Page.jsx';
+import Pages from './pages/containers/page.jsx';
 import store from './store.js'
 render(
   <Provider store={store}>

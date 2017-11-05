@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Post from '../../posts/containers/Post.jsx';
 import Loading from '../../shared/components/Loading.jsx';
@@ -28,11 +29,7 @@ class Home extends Component {
   }
 
   async initialFetch() {
-
-      const posts = await api.posts.getList(this.props.page);
-      this.props.dispatch(
-        actions.setPost(posts),
-      );
+    await this.props.actions.postNextPage();
       this.setState({
         loading: false
       });
@@ -49,10 +46,8 @@ class Home extends Component {
     }
     return this.setState({ loading: true }, async () => {
       try {
-        const posts = await api.posts.getList(this.props.page);
-        this.props.dispatch(
-          actions.setPost(posts),
-        );
+        this.props.actions.postNextPage();
+
         this.setState({
           loading: false
         });
@@ -66,7 +61,6 @@ class Home extends Component {
   }
 
   render(){
-    console.log(this.props);
     return(
       <section name="Home" className={styles.section}>
 
@@ -89,7 +83,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  dispatch: PropTypes.func,
+  actions: PropTypes.objectOf(PropTypes.func),
   posts: PropTypes.array.isRequired,
   page: PropTypes.number,
 };
@@ -100,4 +94,9 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Home);
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(actions, dispatch) };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home);
